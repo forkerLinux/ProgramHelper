@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC ">
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>index</title>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    {% block current_css %} {% endblock %}
+    {% block current_js %} {% endblock %}
+</head>
+
+<body>
+{% block body %} {% endblock %}
+</body>
+
+<script type="text/javascript">
+{% block script %} {% endblock %}
+</script>
+</html>

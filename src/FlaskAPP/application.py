@@ -6,7 +6,7 @@ from flask import Flask
 
 from FlaskAPP import configs
 from FlaskAPP.configs import lm
-from FlaskAPP.configs import db, cache, redis, migrate, rest_api
+from FlaskAPP.configs import db, cache, redis, migrate, rest_api, es_api
 
 
 __all__ = ['create_app']
@@ -37,6 +37,11 @@ def configure_app(app, config):
     configure_template_filter(app)
     configure_migrate(app)
     configure_rest(app)
+    configure_es(app)
+
+
+def configure_es(app):
+    es_api.init_app(app)
 
 
 def configure_redis(app):

@@ -14,6 +14,8 @@ from flask_restful import Api
 from celery import Celery
 from celery.schedules import crontab
 
+from FlaskAPP.helpers.es_api import EsApi
+
 db = SQLAlchemy()
 redis = fRedis()
 cache = Cache()
@@ -22,6 +24,7 @@ logger = None
 migrate = Migrate()
 rest_api = Api()
 celery = Celery()
+es_api = EsApi()
 warnings.simplefilter('ignore', ExtDeprecationWarning)
 
 
@@ -36,7 +39,7 @@ class DefaultConfig(object):
     REDIS_URL = 'redis://@localhost:6379/1'
 
     # mysql config
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:123456@localhost:3306/rcat'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:123456@localhost:3306/programhelper'
     # SQLALCHEMY_ECHO = True
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     SQLALCHEMY_POOL_SIZE = 20
@@ -59,6 +62,8 @@ class DefaultConfig(object):
             'args': ("Message", )
         }
     }
+    # ES URL
+    ES_URL = 'http://localhost:8000'
 
 class TestConfig(object):
     CELERY_TASK_SERIALIZER = 'json'
